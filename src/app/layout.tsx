@@ -3,6 +3,7 @@ import { Geist } from 'next/font/google'
 import './globals.css'
 import { AuthProvider } from '@/contexts/AuthContext'
 import { Toaster } from '@/components/ui/sonner'
+import { Providers } from '@/components/providers'
 
 const geist = Geist({
   variable: '--font-geist-sans',
@@ -19,8 +20,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="de" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full">
         <AuthProvider>
-          {children}
-          <Toaster />
+          <Providers>
+            {children}
+            <Toaster />
+          </Providers>
         </AuthProvider>
       </body>
     </html>
